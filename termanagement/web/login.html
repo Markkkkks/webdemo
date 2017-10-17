@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, max-scale = 1">
+    <meta http-equiv="pragma" content="no-cache">
+     <meta http-equiv="cache-control" content="no-cache">
+     <meta http-equiv="expires" content="0">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .con {
+            margin-top: 150px;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .radius {
+            border-radius: 5px 5px;
+        }
+    </style>
+    <!--<script src="js/jquery-3.2.1.min.js"></script>-->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script>
+        //function checklogin() {
+//        if(checkInput()) {
+//            alert("验证成功");
+//            alert($("#username").val()+$("#password").val());
+//            $.get("checklogin?username="+$("#username").val()+"&password="+$("#password").val(),
+//                function(result){
+//                alert(result);
+//            });
+//        }else{
+//            return false;
+//        }
+//    };
+        function checklogin() {
+            if (checkInput()) {
+                window.alert('success');
+                var url = "checklogin?username=" + $('#username').val() + "&password=" + $('#password').val();
+                $.ajax(url)
+                    .done(function (data) {
+                        window.alert(1);
+                        window.alert(data);
+                    })
+                    .fail(function () {
+                        window.alert('false')
+                    })
+                    .always(function () {
+                        window.alert('finish')
+                    })
+            }
+        }
+
+        function checkInput() {
+            //判断用户名
+            if ($("#username").val() == null || $("#username").val() == "") {
+                alert("用户名不能为空");
+                return false;
+            }
+            //判断密码
+            if ($("#password").val() == null || $("#password").val() == "") {
+                alert("密码不能为空");
+                return false;
+            }
+            re = /select|update|delete|exec|count|'|"|=|;|>|<|%/i;
+            if (re.test($("#username").val()) | re.test($("#password").val())) {
+                alert("拒绝非法输入"); //注意中文乱码
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+</head>
+
+
+<body background="image/background.jpg">
+<div class="container-fluid col-lg-6 col-lg-offset-3 ">
+    <div class="con radius">
+        <h1 class="text-center" style="margin-top:15px;margin-bottom:20px">终端管理系统</h1>
+        <div class="row">
+            <form class="form-horizontal col-lg-11 col-md-11">
+                <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label">账号</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="username" placeholder="账号">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-2 control-label">密码</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="password" placeholder="密码">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Remember me
+                            </label>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary btn-block" onclick="checklogin()">登录</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

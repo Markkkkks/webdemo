@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>终端管理系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT">
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+
+        @media (max-width: 980px) {
+            /* Enable use of floated navbar text */
+            .navbar-text.pull-right {
+                float: none;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+    </style>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/angular-route/1.3.13/angular-route.js"></script>
+    <script>
+        // angular.module('route', ['ngRoute'])
+        //   .config(['$routeProvider', function ($routeProvider) {
+        //     $routeProvider
+        //       // .when('/ter', {
+        //       //  templateUrl : "/testroute/detail.html"
+        //       //  })
+        //       .when('/em', { template: '查询员工' })
+        //       .when('/ter2', { template: '查询终端' })
+        //       .when('/de', { template: '查询部门' })
+        //       .otherwise({ redirectTo: '/ter' });
+        //   }]);
+        var myApp = angular.module('route', ['ngRoute']);
+
+        function RouteConfig($routeProvider) {
+            $routeProvider.when('/ter', {
+                templateUrl: 'ter.html'
+            }).when('/log', {
+                templateUrl: 'log.html'
+            }).when('/useless', {
+                templateUrl: 'useless.html'
+            }).otherwise({
+                redirectTo: '/ter'
+            });
+        }
+
+        myApp.config(RouteConfig);//配置我们的路由
+    </script>
+
+
+</head>
+
+<body>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="#">终端管理系统</a>
+            <div class="nav-collapse collapse">
+                <p class="navbar-text pull-right">
+                    <img src="image/icon.png" style="width:20px;height:20px">登录名为 <a href="#" class="navbar-link">Username</a>
+                </p>
+                <ul class="nav">
+                    <li class="active"><a href="#">主页</a></li>
+                    <li><a href="#about">关于</a></li>
+                    <li><a href="#contact">联系方式</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="row-fluid" ng-app='route'>
+        <div class="span3">
+            <div class="well well-lg  sidebar-nav" style="height:600px">
+                <ul class="nav nav-list">
+                    <li class="nav-header">功能</li>
+                    <li class="active"><a href="#/ter">查看工作中终端</a></li>
+                    <li><a href="#/log">查询日志</a></li>
+                    <li><a href="#/useless">查询报废终端</a></li>
+
+
+                </ul>
+            </div>
+            <!--/.well -->
+        </div>
+        <!--/span-->
+        <div class="span9 well well-lg" style="height:620px" ng-view>
+
+
+        </div>
+        <!--/span-->
+    </div>
+    <!--/row-->
+
+
+    <footer>
+        <p>&copy; Company 2013</p>
+    </footer>
+
+</div>
+<!--/.fluid-container-->
+
+<!-- Le javascript
+  ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap-transition.js"></script>
+<script src="js/bootstrap-alert.js"></script>
+<script src="js/bootstrap-modal.js"></script>
+<script src="js/bootstrap-dropdown.js"></script>
+<script src="js/bootstrap-scrollspy.js"></script>
+<script src="js/bootstrap-tab.js"></script>
+<script src="js/bootstrap-tooltip.js"></script>
+<script src="js/bootstrap-popover.js"></script>
+<script src="js/bootstrap-button.js"></script>
+<script src="js/bootstrap-collapse.js"></script>
+<script src="js/bootstrap-carousel.js"></script>
+<script src="js/bootstrap-typeahead.js"></script>
+
+
+</body>
+
+</html>

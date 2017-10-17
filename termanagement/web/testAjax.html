@@ -1,0 +1,45 @@
+<html>
+<head>
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/json.js"></script>
+    <script>
+        function loadXMLDoc() {
+            alert("click");
+            $.get("mServlet", "test1=123", function (data) {
+                alert("Data Loaded: " + data);
+//                data = eval("("+data+")");
+//                alert(data[0]);
+//                alert(data[1]);
+                var objs = data.parseJSON();
+//                objs.forEach(function (t, number, ts) { alert(t+":"+number+":"+ts) })
+                $.each(objs, function(idx, obj) {
+                    //获取到每个department对象
+//                    alert(typeof obj);
+//                    alert(obj.location);
+//                    alert(obj.id);
+                    $("#testbody").append("<tr>"+ "<td>"+obj.id +"</td>" + "<td>"+obj.name +"</td>"+ "<td>"+obj.location +"</td>"+"</tr>")
+                });
+            });
+        }
+    </script>
+</head>
+<body>
+
+<h2>AJAX</h2>
+<button type="button" onclick="loadXMLDoc()">请求数据</button>
+<table >
+    <caption>基本的表格布局</caption>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>名称</th>
+        <th>地点</th>
+    </tr>
+    </thead>
+    <tbody id="testbody">
+
+    </tbody>
+</table>
+
+</body>
+</html>
